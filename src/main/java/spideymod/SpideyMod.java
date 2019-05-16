@@ -5,6 +5,19 @@ import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import spideymod.cards.*;
+import spideymod.events.IdentityCrisisEvent;
+import spideymod.potions.PlaceholderPotion;
+import spideymod.relics.BottledPlaceholderRelic;
+import spideymod.relics.DeckOfManyBuffsRelic;
+import spideymod.relics.DefaultClickableRelic;
+import spideymod.relics.PlaceholderRelic;
+import spideymod.relics.PlaceholderRelic2;
+import spideymod.util.IDCheckDontTouchPls;
+import spideymod.util.TextureLoader;
+import spideymod.variables.DefaultCustomVariable;
+import spideymod.variables.DefaultSecondMagicNumber;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -21,17 +34,6 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theDefault.cards.*;
-import theDefault.events.IdentityCrisisEvent;
-import theDefault.potions.PlaceholderPotion;
-import theDefault.relics.BottledPlaceholderRelic;
-import theDefault.relics.DefaultClickableRelic;
-import theDefault.relics.PlaceholderRelic;
-import theDefault.relics.PlaceholderRelic2;
-import theDefault.util.IDCheckDontTouchPls;
-import theDefault.util.TextureLoader;
-import theDefault.variables.DefaultCustomVariable;
-import theDefault.variables.DefaultSecondMagicNumber;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -221,7 +223,7 @@ public class SpideyMod implements
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         
         
-        BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
+        //BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
         
         
         logger.info("Done loading badge Image and mod options");
@@ -241,7 +243,7 @@ public class SpideyMod implements
         logger.info("Adding relics");
         
         
-        //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        BaseMod.addRelic(new DeckOfManyBuffsRelic(), RelicType.SHARED);
         
         
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
@@ -283,7 +285,7 @@ public class SpideyMod implements
         
         
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                getModID() + "Resources/localization/eng/DefaultMod-Relic-Strings.json");
+                getModID() + "Resources/localization/eng/spideymod-Relic-Strings.json");
         
         
         BaseMod.loadCustomStringsFile(EventStrings.class,
@@ -301,7 +303,7 @@ public class SpideyMod implements
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
         
-        logger.info("Done edittting strings");
+        logger.info("Done editing strings");
     }
     
     @Override
