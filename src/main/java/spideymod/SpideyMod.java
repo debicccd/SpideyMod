@@ -11,17 +11,20 @@ import spideymod.potions.PlaceholderPotion;
 import spideymod.relics.BottledPlaceholderRelic;
 import spideymod.relics.DeckOfManyBuffsRelic;
 import spideymod.relics.DefaultClickableRelic;
+import spideymod.relics.PizzaDeliveryRelic;
 import spideymod.relics.PlaceholderRelic;
 import spideymod.relics.PlaceholderRelic2;
 import spideymod.util.IDCheckDontTouchPls;
 import spideymod.util.TextureLoader;
 import spideymod.variables.DefaultCustomVariable;
 import spideymod.variables.DefaultSecondMagicNumber;
+import spideymod.vfx.ThrowPizzaEffect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -30,6 +33,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -225,6 +229,7 @@ public class SpideyMod implements
         
         //BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
         
+        ImageMaster.vfxAtlas.addRegion("combat/pizza", new TextureRegion(ThrowPizzaEffect.IMG, ThrowPizzaEffect.IMG.getWidth(), ThrowPizzaEffect.IMG.getHeight()));
         
         logger.info("Done loading badge Image and mod options");
     }
@@ -244,9 +249,11 @@ public class SpideyMod implements
         
         
         BaseMod.addRelic(new DeckOfManyBuffsRelic(), RelicType.SHARED);
+        BaseMod.addRelic(new PizzaDeliveryRelic(), RelicType.SHARED);
         
         
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(DeckOfManyBuffsRelic.ID);
+        UnlockTracker.markRelicAsSeen(PizzaDeliveryRelic.ID);
         logger.info("Done adding relics!");
     }
     
@@ -308,8 +315,6 @@ public class SpideyMod implements
     
     @Override
     public void receiveEditKeywords() {
-        
-        
         Gson gson = new Gson();
         String json = Gdx.files.internal(getModID() + "Resources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);

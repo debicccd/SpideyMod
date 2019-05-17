@@ -37,5 +37,13 @@
         "DESCRIPTIONS": [
             "Start combat with 2 random buffs."
         ]
+    },
+    "spideymod:PizzaDelivery": {
+        "NAME": "Pizza Delivery",
+        "FLAVOR": "Pizza Time!",
+        "DESCRIPTIONS": [
+            "Right-click to 'deliver' a pizza at the targeted non-minion enemy. They heal up to #b",
+            " of their missing HP and you gain that much gold. Usable once per combat."
+        ]
     }
 }
