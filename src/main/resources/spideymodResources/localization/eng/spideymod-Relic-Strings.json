@@ -45,5 +45,13 @@
             "Right-click to 'deliver' a pizza at the targeted non-minion enemy. They heal up to #b",
             " of their missing HP and you gain that much gold. Usable once per combat."
         ]
+    },
+    "spideymod:BicycleGenerator": {
+        "NAME": "Bicycle Generator",
+        "FLAVOR": "Energy and exercise combined into one relic",
+        "DESCRIPTIONS": [
+            "Every time you draw #b",
+            " cards, gain [E]"
+        ]
     }
 }

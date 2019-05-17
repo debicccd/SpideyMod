@@ -8,6 +8,7 @@ import basemod.interfaces.*;
 import spideymod.cards.*;
 import spideymod.events.IdentityCrisisEvent;
 import spideymod.potions.PlaceholderPotion;
+import spideymod.relics.BicycleGeneratorRelic;
 import spideymod.relics.BottledPlaceholderRelic;
 import spideymod.relics.DeckOfManyBuffsRelic;
 import spideymod.relics.DefaultClickableRelic;
@@ -250,10 +251,11 @@ public class SpideyMod implements
         
         BaseMod.addRelic(new DeckOfManyBuffsRelic(), RelicType.SHARED);
         BaseMod.addRelic(new PizzaDeliveryRelic(), RelicType.SHARED);
-        
+        BaseMod.addRelic(new BicycleGeneratorRelic(), RelicType.SHARED);
         
         UnlockTracker.markRelicAsSeen(DeckOfManyBuffsRelic.ID);
         UnlockTracker.markRelicAsSeen(PizzaDeliveryRelic.ID);
+        UnlockTracker.markRelicAsSeen(BicycleGeneratorRelic.ID);
         logger.info("Done adding relics!");
     }
     
